@@ -121,18 +121,17 @@
     file: "Upload File",
   };
 
+  // Kredensial demo untuk portofolio publik. Sengaja disimpan sebagai konstanta
+  // di frontend (bukan rahasia sungguhan) karena seluruh sistem ini memang
+  // demo/sample, tanpa data asli.
+  const DEMO_USERNAME = "demo";
+  const DEMO_PASSWORD = "demo123";
+
   function getSession() {
-    // For demo, we are bypass authentication and using a mock admin session if none exists
-    const mockSession = { token: "demo-token", username: "demo_recruiter", role: "superadmin" };
     try {
-      let s = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "null");
-      if (!s) {
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify(mockSession));
-        s = mockSession;
-      }
-      return s;
+      return JSON.parse(sessionStorage.getItem(SESSION_KEY) || "null");
     } catch (e) {
-      return mockSession;
+      return null;
     }
   }
   function getToken() {
@@ -144,13 +143,29 @@
     return !!s && s.role === "superadmin";
   }
 
+  // ======================================================================
+  // MODE DEMO TERKUNCI (PENTING)
+  // ======================================================================
+  // Situs ini dipublikasikan sebagai contoh portofolio. Supaya data ASLI
+  // (kalau suatu saat backend/Netlify Blobs project ini benar-benar
+  // dikonfigurasi) tidak pernah terbaca, tertimpa, atau berubah oleh
+  // pengunjung publik, SELURUH permintaan dari Panel Admin di bawah ini
+  // sengaja TIDAK PERNAH menyentuh backend/Netlify Functions sungguhan.
+  // Semua data (submissions, pertanyaan, template email) hanya disimpan di
+  // localStorage milik browser masing-masing pengunjung, dan direset ke
+  // data sample bawaan setiap kali "Reset ke Data Master" ditekan.
+  const DEMO_ONLY_MODE = true;
+
   async function authedFetch(url, opts) {
     opts = opts || {};
+    if (DEMO_ONLY_MODE) {
+      // Tidak pernah fetch ke backend asli sama sekali di mode demo.
+      return createMockResponse(url, opts);
+    }
     const headers = Object.assign({}, opts.headers, { "x-admin-token": getToken() || "" });
     try {
       const res = await fetch(url, Object.assign({}, opts, { headers: headers }));
       if (res.status === 401) {
-        // Fallback to local mockup data if Netlify backend fails or has no database/blobs set up yet
         console.warn("Backend 401. Falling back to frontend simulated storage for demo.");
         return createMockResponse(url, opts);
       }
@@ -530,6 +545,12 @@
     return { status: 404, ok: false, json: async () => ({ message: "Not found" }) };
   }
 
+  function showLogin(message) {
+    loginScreen.style.display = "block";
+    adminScreen.style.display = "none";
+    if (message) loginAlert.innerHTML = '<div class="msg msg-err">' + message + '</div>';
+  }
+
   async function showAdmin() {
     loginScreen.style.display = "none";
     adminScreen.style.display = "block";
@@ -541,10 +562,20 @@
   }
 
   loginBtn.addEventListener("click", async () => {
-    // For public demo, clicking login immediately proceeds as a successful mock session log
-    sessionStorage.setItem(SESSION_KEY, JSON.stringify({ token: "demo-token", username: "demo_recruiter", role: "superadmin" }));
-    loginAlert.innerHTML = "";
-    showAdmin();
+    const username = (userInput.value || "").trim().toLowerCase();
+    const pw = pwInput.value.trim();
+    if (!username || !pw) {
+      loginAlert.innerHTML = '<div class="msg msg-err">Username dan password wajib diisi.</div>';
+      return;
+    }
+    if (username === DEMO_USERNAME && pw === DEMO_PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify({ token: "demo-token", username: "demo", role: "superadmin" }));
+      loginAlert.innerHTML = "";
+      pwInput.value = "";
+      showAdmin();
+    } else {
+      loginAlert.innerHTML = '<div class="msg msg-err">Username atau password salah. Gunakan demo / demo123.</div>';
+    }
   });
 
   pwInput.addEventListener("keydown", (e) => { if (e.key === "Enter") loginBtn.click(); });
@@ -567,6 +598,20 @@
 
   // ---------- Direct Demo Generates Button Logic ----------
   const demoGenerateBtn = document.getElementById("demoGenerateBtn");
+  const demoResetBtn = document.getElementById("demoResetBtn");
+  if (demoResetBtn) {
+    demoResetBtn.addEventListener("click", () => {
+      if (!confirm("Reset semua data kandidat, pertanyaan, dan template email kembali ke versi sample bawaan (data master)? Perubahan yang kamu buat di browser ini akan hilang.")) return;
+      try {
+        localStorage.removeItem(LOCAL_STORAGE_DB_KEY);
+        localStorage.removeItem(LOCAL_STORAGE_CONFIG_KEY);
+        localStorage.removeItem(LOCAL_STORAGE_TEMPLATES_KEY);
+      } catch (e) {}
+      subAlert.innerHTML = '<div class="msg msg-ok">Data sudah direset ke sample bawaan (data master).</div>';
+      loadConfig();
+      loadSubmissions();
+    });
+  }
   if (demoGenerateBtn) {
     demoGenerateBtn.addEventListener("click", () => {
       const names = ["Andi Wijaya", "Dewi Lestari", "Rian Hidayat", "Siti Rahma", "Eko Prasetyo", "Amalia Putri", "Taufik Ismail"];

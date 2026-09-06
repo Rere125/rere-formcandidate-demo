@@ -13,17 +13,22 @@
 
   <div id="loginScreen" class="login-box">
     <h1>Admin Panel (Demo Mode)</h1>
-    <p class="hint" style="margin-bottom:16px;">Sistem ini dikonfigurasi sebagai <strong>Demo Publik</strong>. Tidak diperlukan password untuk masuk.</p>
+    <p class="hint" style="margin-bottom:16px;">Ini adalah <strong>Demo Publik</strong> untuk keperluan portofolio. Gunakan kredensial contoh di bawah ini untuk masuk.</p>
     <div id="loginAlert"></div>
-    <div class="field" style="display:none;">
+    <div class="demo-cred-box" style="background:#fdfaf2; border:1px dashed var(--gold-800, #c9a227); border-radius:8px; padding:10px 12px; margin-bottom:16px; font-size:13px;">
+      🔑 <strong>Demo Login:</strong><br />
+      Username: <code>demo</code> &nbsp;|&nbsp; Password: <code>demo123</code>
+    </div>
+    <div class="field">
       <label for="userInput">Username</label>
-      <input type="text" id="userInput" autocomplete="username" value="demo_recruiter" autocapitalize="off" />
+      <input type="text" id="userInput" autocomplete="username" placeholder="demo" autocapitalize="off" />
     </div>
-    <div class="field" style="display:none;">
+    <div class="field">
       <label for="pwInput">Password</label>
-      <input type="password" id="pwInput" autocomplete="current-password" value="demo" />
+      <input type="password" id="pwInput" autocomplete="current-password" placeholder="demo123" />
     </div>
-    <button class="btn btn-primary" id="loginBtn" style="width:100%;">Masuk Direct sebagai Demo Admin</button>
+    <button class="btn btn-primary" id="loginBtn" style="width:100%;">Masuk</button>
+    <p class="hint" style="margin-top:14px;">Panel ini hanya berisi data contoh (sample) untuk keperluan demo/portofolio.</p>
   </div>
 
   <div id="adminScreen" class="admin-shell" style="display:none;">
@@ -52,6 +57,7 @@
         <div style="display:flex; gap:10px;">
           <button class="btn btn-gold" id="downloadAllBtn">&#8681; Download Semua Data</button>
           <button class="btn btn-ghost" id="demoGenerateBtn" style="border: 1px dashed var(--gold-800); background: #fdfaf2;">+ Generate Sample Data</button>
+          <button class="btn btn-ghost" id="demoResetBtn" style="border: 1px dashed #b23a3a; color:#b23a3a;">&#8635; Reset ke Data Master</button>
         </div>
       </div>
       <div class="result-count" id="subResultCount" style="display:none;"></div>

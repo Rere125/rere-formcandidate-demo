@@ -27,6 +27,13 @@
   const signaturePads = {};
   const repeaterCounters = {};
 
+  // Mode demo terkunci (lihat penjelasan lengkap di init() & submitForm()
+  // di bawah): situs ini dipublikasikan sebagai contoh portofolio, jadi
+  // form kandidat TIDAK PERNAH mengirim data ke backend/Netlify Functions
+  // asli. Semua jawaban hanya disimpan sementara di localStorage browser
+  // masing-masing pengunjung, supaya data master tidak pernah berubah.
+  const DEMO_ONLY_MODE = true;
+
   // Netlify function punya batas KERAS 6MB per request (tidak bisa dinaikkan,
   // termasuk di paket berbayar), dan base64 encoding menambah ~33% ukuran file.
   // Form ini punya banyak field upload (ijazah, transkrip, slip gaji, dst) yang
@@ -61,19 +68,59 @@
     fileBudgetText.textContent = formatBytes(total) + " / " + formatBytes(MAX_TOTAL_UPLOAD_BYTES);
   }
 
-  init();
+  // Pertanyaan contoh (sample) dipakai sebagai fallback kalau backend/Netlify
+  // Blobs belum terkonfigurasi, supaya form tetap bisa ditampilkan & dicoba
+  // sebagai demo publik dalam satu link tanpa perlu setup database apapun.
+  const FALLBACK_SECTIONS = [
+    { id: "pribadi", title: "Data Pribadi", description: "Identitas dan informasi kontak." },
+    { id: "pengalaman", title: "Pendidikan & Pengalaman", description: "Ringkasan latar belakang kandidat." },
+    { id: "penutup", title: "Penutup", description: "Harapan dan persetujuan data." },
+  ];
+  const FALLBACK_QUESTIONS = [
+    { id: "nama", section: "pribadi", type: "text", label: "Nama Lengkap", required: true },
+    { id: "posisi", section: "pribadi", type: "text", label: "Pekerjaan yang Dilamar", required: true },
+    { id: "email", section: "pribadi", type: "email", label: "Alamat Email", required: true },
+    { id: "hp", section: "pribadi", type: "tel", label: "Nomor Handphone", required: true },
+    { id: "alamat_domisili", section: "pribadi", type: "textarea", label: "Alamat Domisili" },
+    { id: "pendidikan", section: "pengalaman", type: "text", label: "Pendidikan Terakhir" },
+    { id: "jurusan", section: "pengalaman", type: "text", label: "Jurusan / Bidang Studi" },
+    { id: "pengalaman_kerja", section: "pengalaman", type: "textarea", label: "Ringkasan Pengalaman Kerja" },
+    { id: "keahlian", section: "pengalaman", type: "textarea", label: "Keahlian Utama" },
+    { id: "cita_cita", section: "penutup", type: "text", label: "Macam pekerjaan/jabatan apakah yang sesuai dengan cita-cita Anda?" },
+    { id: "ekspektasi_gaji", section: "penutup", type: "text", label: "Ekspektasi Gaji" },
+    { id: "mulai_kerja", section: "penutup", type: "date", label: "Perkiraan Mulai Bekerja" },
+    { id: "pernyataan", section: "penutup", type: "checkbox", label: "Saya menyatakan seluruh data yang saya isi pada formulir ini adalah benar.", required: true },
+    { id: "tanda_tangan", section: "penutup", type: "signature", label: "Tanda Tangan Pelamar", required: true },
+  ];
 
   async function init() {
+    if (DEMO_ONLY_MODE) {
+      // Mode demo terkunci: jangan pernah panggil backend asli sama sekali,
+      // supaya data master (kalau backend project ini pernah dikonfigurasi
+      // sungguhan) tidak pernah terbaca oleh pengunjung publik.
+      SECTIONS = FALLBACK_SECTIONS;
+      QUESTIONS = FALLBACK_QUESTIONS;
+      render();
+      return;
+    }
     try {
       const res = await fetch("/.netlify/functions/get-questions");
+      if (!res.ok) throw new Error("bad response");
       const data = await res.json();
-      SECTIONS = data.sections || [];
-      QUESTIONS = data.questions || [];
+      SECTIONS = (data.sections && data.sections.length) ? data.sections : FALLBACK_SECTIONS;
+      QUESTIONS = (data.questions && data.questions.length) ? data.questions : FALLBACK_QUESTIONS;
       render();
     } catch (e) {
-      loadingState.textContent = "Gagal memuat formulir. Silakan refresh halaman.";
+      // Backend/Netlify Blobs belum terkonfigurasi (mis. dijalankan sebagai demo
+      // statis) — tetap tampilkan form pakai pertanyaan contoh, jangan macet.
+      console.warn("get-questions gagal, memakai pertanyaan contoh (fallback).", e);
+      SECTIONS = FALLBACK_SECTIONS;
+      QUESTIONS = FALLBACK_QUESTIONS;
+      render();
     }
   }
+
+  init();
 
   function render() {
     loadingState.style.display = "none";
@@ -619,13 +666,34 @@
         })
       );
 
+      if (DEMO_ONLY_MODE) {
+        // Mode demo terkunci: jangan pernah kirim ke backend asli. Simpan
+        // hanya di localStorage browser pengunjung supaya data master tidak
+        // pernah tersentuh/tertimpa oleh siapapun yang mencoba form demo ini.
+        saveSubmissionToLocalDemo(answers, files);
+        formLayout.style.display = "none";
+        document.querySelector(".letterhead").style.display = "none";
+        successState.style.display = "block";
+        return;
+      }
+
       const res = await fetch("/.netlify/functions/submit-candidate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ answers: answers, files: files }),
-      });
+      }).catch(() => null);
 
-      if (!res.ok) {
+      if (!res || !res.ok) {
+        // Backend/Netlify Blobs belum terkonfigurasi (demo statis) — simpan
+        // langsung ke localStorage supaya tetap muncul di tab "Data Kandidat"
+        // pada Panel Admin (demo tetap terasa hidup dalam satu link).
+        if (!res) {
+          saveSubmissionToLocalDemo(answers, files);
+          formLayout.style.display = "none";
+          document.querySelector(".letterhead").style.display = "none";
+          successState.style.display = "block";
+          return;
+        }
         const err = await res.json().catch(() => null);
         const msg = err && err.message
           ? err.message
@@ -655,6 +723,37 @@
       reader.onerror = reject;
       reader.readAsDataURL(file);
     });
+  }
+
+  // Fallback penyimpanan demo: dipakai kalau backend Netlify Functions/Blobs
+  // tidak tersedia (mis. situs dijalankan sebagai demo statis tanpa deploy
+  // penuh). Disimpan dengan key yang SAMA dengan yang dipakai admin.js
+  // ("demo_candidate_submissions"), supaya kandidat yang baru saja mengisi
+  // form ini langsung muncul di tab "Data Kandidat" pada Panel Admin.
+  function saveSubmissionToLocalDemo(answers, files) {
+    const LOCAL_STORAGE_DB_KEY = "demo_candidate_submissions";
+    const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    const record = {
+      id,
+      submittedAt: new Date().toISOString(),
+      status: "baru",
+      answers: answers,
+      files: (files || []).map((f) => ({
+        questionId: f.questionId,
+        rowIndex: f.rowIndex !== undefined ? f.rowIndex : null,
+        subFieldId: f.subFieldId || null,
+        filename: f.filename,
+        key: `local-demo/${id}/${f.filename}`,
+      })),
+    };
+    try {
+      const existingRaw = localStorage.getItem(LOCAL_STORAGE_DB_KEY);
+      const existing = existingRaw ? JSON.parse(existingRaw) : [];
+      existing.unshift(record);
+      localStorage.setItem(LOCAL_STORAGE_DB_KEY, JSON.stringify(existing));
+    } catch (e) {
+      console.warn("Gagal menyimpan submission demo ke localStorage.", e);
+    }
   }
 
   function escapeHtml(str) {
