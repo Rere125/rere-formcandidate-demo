@@ -1,0 +1,9 @@
+{
+  "name": "form-kandidat-tatalogam",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Form data kandidat dengan pertanyaan editable, upload file, dan panel admin khusus tim.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
