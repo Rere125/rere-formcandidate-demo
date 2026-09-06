@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Form Pengisian Data Pribadi Pelamar</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <div class="app" id="formApp">
+
+    <div class="letterhead">
+       <div class="logo-row">
+    <img src="/images/images.png" alt="Logo Perusahaan" class="logo-box" />
+    <div>
+      <div class="eyebrow">Recruitment HRD Demo &middot; FM.HC-HO.02.01</div>
+      <h1 id="formTitle">Formulir Data Kandidat</h1>
+      <p class="sub" id="formSub">Lengkapi setiap pertanyaan pada bagian di menu samping. Data Pelamar hanya dapat diakses oleh Tim Recruitment HRD.</p>
+    </div>
+       </div>
+    </div>
+
+    <div id="loadingState" class="hint" style="padding:20px;">Memuat formulir…</div>
+
+    <div class="layout" id="formLayout" style="display:none;">
+      <nav class="sidenav" id="sidenav">
+        <div class="progress-label">BAGIAN <span id="stepLabel">1</span> DARI <span id="stepTotal">1</span></div>
+      </nav>
+
+      <div class="panel">
+        <div class="file-budget" id="fileBudget" style="display:none;">
+          <div class="file-budget-head">
+            <b>Total ukuran file terpilih</b>
+            <span id="fileBudgetText">0KB / 4.0MB</span>
+          </div>
+          <div class="file-budget-track"><div class="file-budget-fill" id="fileBudgetFill"></div></div>
+        </div>
+        <div id="alertBox"></div>
+        <form id="candidateForm">
+          <div id="sectionsContainer"></div>
+        </form>
+
+        <div class="nav-actions">
+          <button type="button" class="btn btn-ghost" id="prevBtn">&larr; Sebelumnya</button>
+          <button type="button" class="btn btn-primary" id="nextBtn">Selanjutnya &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="successState" class="panel" style="display:none; text-align:center;">
+      <h2 style="font-family:var(--font-display); color:var(--navy-900);">Terima kasih!</h2>
+      <p class="hint">Data kamu sudah kami terima. Tim Recruitment kami akan menghubungi kamu jika ada perkembangan dan informasi  lebih lanjut.</p>
+    </div>
+
+<footer class="note">
+  (2026) Human Capital Management HRD Demo
+  <div class="contact-line">
+    recruitment.demo@example.com &middot; (021) 555-0199
+  </div>
+</footer>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
