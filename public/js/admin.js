@@ -143,13 +143,29 @@
     return !!s && s.role === "superadmin";
   }
 
+  // ======================================================================
+  // MODE DEMO TERKUNCI (PENTING)
+  // ======================================================================
+  // Situs ini dipublikasikan sebagai contoh portofolio. Supaya data ASLI
+  // (kalau suatu saat backend/Netlify Blobs project ini benar-benar
+  // dikonfigurasi) tidak pernah terbaca, tertimpa, atau berubah oleh
+  // pengunjung publik, SELURUH permintaan dari Panel Admin di bawah ini
+  // sengaja TIDAK PERNAH menyentuh backend/Netlify Functions sungguhan.
+  // Semua data (submissions, pertanyaan, template email) hanya disimpan di
+  // localStorage milik browser masing-masing pengunjung, dan direset ke
+  // data sample bawaan setiap kali "Reset ke Data Master" ditekan.
+  const DEMO_ONLY_MODE = true;
+
   async function authedFetch(url, opts) {
     opts = opts || {};
+    if (DEMO_ONLY_MODE) {
+      // Tidak pernah fetch ke backend asli sama sekali di mode demo.
+      return createMockResponse(url, opts);
+    }
     const headers = Object.assign({}, opts.headers, { "x-admin-token": getToken() || "" });
     try {
       const res = await fetch(url, Object.assign({}, opts, { headers: headers }));
       if (res.status === 401) {
-        // Fallback to local mockup data if Netlify backend fails or has no database/blobs set up yet
         console.warn("Backend 401. Falling back to frontend simulated storage for demo.");
         return createMockResponse(url, opts);
       }
@@ -582,6 +598,20 @@
 
   // ---------- Direct Demo Generates Button Logic ----------
   const demoGenerateBtn = document.getElementById("demoGenerateBtn");
+  const demoResetBtn = document.getElementById("demoResetBtn");
+  if (demoResetBtn) {
+    demoResetBtn.addEventListener("click", () => {
+      if (!confirm("Reset semua data kandidat, pertanyaan, dan template email kembali ke versi sample bawaan (data master)? Perubahan yang kamu buat di browser ini akan hilang.")) return;
+      try {
+        localStorage.removeItem(LOCAL_STORAGE_DB_KEY);
+        localStorage.removeItem(LOCAL_STORAGE_CONFIG_KEY);
+        localStorage.removeItem(LOCAL_STORAGE_TEMPLATES_KEY);
+      } catch (e) {}
+      subAlert.innerHTML = '<div class="msg msg-ok">Data sudah direset ke sample bawaan (data master).</div>';
+      loadConfig();
+      loadSubmissions();
+    });
+  }
   if (demoGenerateBtn) {
     demoGenerateBtn.addEventListener("click", () => {
       const names = ["Andi Wijaya", "Dewi Lestari", "Rian Hidayat", "Siti Rahma", "Eko Prasetyo", "Amalia Putri", "Taufik Ismail"];

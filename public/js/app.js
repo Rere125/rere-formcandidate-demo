@@ -27,6 +27,13 @@
   const signaturePads = {};
   const repeaterCounters = {};
 
+  // Mode demo terkunci (lihat penjelasan lengkap di init() & submitForm()
+  // di bawah): situs ini dipublikasikan sebagai contoh portofolio, jadi
+  // form kandidat TIDAK PERNAH mengirim data ke backend/Netlify Functions
+  // asli. Semua jawaban hanya disimpan sementara di localStorage browser
+  // masing-masing pengunjung, supaya data master tidak pernah berubah.
+  const DEMO_ONLY_MODE = true;
+
   // Netlify function punya batas KERAS 6MB per request (tidak bisa dinaikkan,
   // termasuk di paket berbayar), dan base64 encoding menambah ~33% ukuran file.
   // Form ini punya banyak field upload (ijazah, transkrip, slip gaji, dst) yang
@@ -61,85 +68,41 @@
     fileBudgetText.textContent = formatBytes(total) + " / " + formatBytes(MAX_TOTAL_UPLOAD_BYTES);
   }
 
-  init();
-
   // Pertanyaan contoh (sample) dipakai sebagai fallback kalau backend/Netlify
   // Blobs belum terkonfigurasi, supaya form tetap bisa ditampilkan & dicoba
   // sebagai demo publik dalam satu link tanpa perlu setup database apapun.
   const FALLBACK_SECTIONS = [
-    { id: "pribadi", title: "Data Pribadi", description: "Identitas dasar dan informasi kontak." },
-    { id: "keluarga", title: "Keluarga & Referensi", description: "Bisa tambah lebih dari satu referensi." },
-    { id: "darurat", title: "Kontak Darurat", description: "Orang yang bisa dihubungi segera dalam keadaan darurat." },
-    { id: "pendidikan", title: "Pendidikan", description: "Riwayat pendidikan formal dan dokumen pendukung." },
-    { id: "pekerjaan", title: "Riwayat Pekerjaan", description: "Mulai dari pekerjaan terakhir." },
-    { id: "tambahan", title: "Pertanyaan Tambahan", description: "Jawab dengan jujur." },
-    { id: "penutup", title: "Harapan, Tes & Persetujuan", description: "Bagian terakhir sebelum kirim." },
+    { id: "pribadi", title: "Data Pribadi", description: "Identitas dan informasi kontak." },
+    { id: "pengalaman", title: "Pendidikan & Pengalaman", description: "Ringkasan latar belakang kandidat." },
+    { id: "penutup", title: "Penutup", description: "Harapan dan persetujuan data." },
   ];
   const FALLBACK_QUESTIONS = [
     { id: "nama", section: "pribadi", type: "text", label: "Nama Lengkap", required: true },
     { id: "posisi", section: "pribadi", type: "text", label: "Pekerjaan yang Dilamar", required: true },
     { id: "email", section: "pribadi", type: "email", label: "Alamat Email", required: true },
     { id: "hp", section: "pribadi", type: "tel", label: "Nomor Handphone", required: true },
-    { id: "tempat_lahir", section: "pribadi", type: "text", label: "Tempat Lahir" },
-    { id: "tanggal_lahir", section: "pribadi", type: "date", label: "Tanggal Lahir" },
-    { id: "jenis_kelamin", section: "pribadi", type: "select", label: "Jenis Kelamin", options: ["Laki-laki", "Perempuan"] },
-    { id: "status_perkawinan", section: "pribadi", type: "select", label: "Status Perkawinan", options: ["Belum Kawin", "Kawin", "Cerai"] },
     { id: "alamat_domisili", section: "pribadi", type: "textarea", label: "Alamat Domisili" },
-    {
-      id: "referensi", section: "keluarga", type: "repeater", label: "Referensi",
-      itemLabel: "Referensi", addLabel: "+ Tambah Referensi", minRows: 1,
-      fields: [
-        { id: "nama", label: "Nama", type: "text", required: true },
-        { id: "hp", label: "Nomor Handphone", type: "tel", required: true },
-        { id: "jabatan", label: "Jabatan", type: "text" },
-        { id: "hubungan", label: "Hubungan", type: "text" },
-      ],
-    },
-    {
-      id: "kontak_darurat", section: "darurat", type: "repeater", label: "Orang yang Dapat Dihubungi Segera",
-      itemLabel: "Kontak", addLabel: "+ Tambah Kontak Darurat", minRows: 1,
-      fields: [
-        { id: "nama", label: "Nama", type: "text", required: true },
-        { id: "alamat", label: "Alamat", type: "text" },
-        { id: "hp", label: "Nomor Handphone", type: "tel", required: true },
-        { id: "hubungan", label: "Hubungan", type: "text" },
-      ],
-    },
-    {
-      id: "riwayat_pendidikan", section: "pendidikan", type: "repeater", label: "Riwayat Pendidikan Formal",
-      itemLabel: "Pendidikan", addLabel: "+ Tambah Jenjang Pendidikan", minRows: 1,
-      fields: [
-        { id: "jenjang", label: "Jenjang", type: "select", options: ["SD", "SMP", "SMA / SMK", "D3", "S1", "S2"] },
-        { id: "institusi", label: "Nama Institusi", type: "text" },
-        { id: "kota", label: "Kota", type: "text" },
-        { id: "jurusan", label: "Jurusan", type: "text" },
-      ],
-    },
-    { id: "upload_ijazah", section: "pendidikan", type: "file", label: "Upload Ijazah Terakhir (PDF)" },
-    {
-      id: "riwayat_kerja", section: "pekerjaan", type: "repeater", label: "Riwayat Pekerjaan (mulai dari yang terakhir)",
-      itemLabel: "Pekerjaan", addLabel: "+ Tambah Riwayat Pekerjaan", minRows: 1,
-      fields: [
-        { id: "jabatan", label: "Jabatan Terakhir", type: "text" },
-        { id: "perusahaan", label: "Nama Perusahaan", type: "text" },
-        { id: "bulan_masuk", label: "Bulan & Tahun Masuk", type: "month" },
-        { id: "bulan_keluar", label: "Bulan & Tahun Keluar", type: "month" },
-        { id: "gaji", label: "Gaji Terakhir", type: "number" },
-        { id: "alasan_berhenti", label: "Alasan Berhenti", type: "text" },
-        { id: "uraian_tugas", label: "Uraian Tugas & Tanggung Jawab", type: "textarea" },
-      ],
-    },
-    { id: "melamar_lain", section: "tambahan", type: "radio", label: "Selain di sini, apakah Anda melamar pekerjaan di perusahaan lain?", options: ["Ya", "Tidak"] },
-    { id: "kontrak_kerja", section: "tambahan", type: "radio", label: "Apakah Anda terikat kontrak kerja dengan perusahaan tempat kerja Anda saat ini?", options: ["Ya", "Tidak"] },
-    { id: "sedia_ditempatkan", section: "tambahan", type: "radio", label: "Bila diterima bekerja, bersediakah Anda ditempatkan sesuai kebutuhan Perusahaan?", options: ["Ya", "Tidak"] },
+    { id: "pendidikan", section: "pengalaman", type: "text", label: "Pendidikan Terakhir" },
+    { id: "jurusan", section: "pengalaman", type: "text", label: "Jurusan / Bidang Studi" },
+    { id: "pengalaman_kerja", section: "pengalaman", type: "textarea", label: "Ringkasan Pengalaman Kerja" },
+    { id: "keahlian", section: "pengalaman", type: "textarea", label: "Keahlian Utama" },
     { id: "cita_cita", section: "penutup", type: "text", label: "Macam pekerjaan/jabatan apakah yang sesuai dengan cita-cita Anda?" },
-    { id: "ekspektasi_gaji", section: "penutup", type: "text", label: "Bila diterima bekerja, berapa besar gaji & fasilitas yang Anda harapkan?" },
-    { id: "mulai_kerja", section: "penutup", type: "text", label: "Bila diterima bekerja, kapan Anda dapat mulai bekerja?" },
+    { id: "ekspektasi_gaji", section: "penutup", type: "text", label: "Ekspektasi Gaji" },
+    { id: "mulai_kerja", section: "penutup", type: "date", label: "Perkiraan Mulai Bekerja" },
     { id: "pernyataan", section: "penutup", type: "checkbox", label: "Saya menyatakan seluruh data yang saya isi pada formulir ini adalah benar.", required: true },
     { id: "tanda_tangan", section: "penutup", type: "signature", label: "Tanda Tangan Pelamar", required: true },
   ];
 
   async function init() {
+    if (DEMO_ONLY_MODE) {
+      // Mode demo terkunci: jangan pernah panggil backend asli sama sekali,
+      // supaya data master (kalau backend project ini pernah dikonfigurasi
+      // sungguhan) tidak pernah terbaca oleh pengunjung publik.
+      SECTIONS = FALLBACK_SECTIONS;
+      QUESTIONS = FALLBACK_QUESTIONS;
+      render();
+      return;
+    }
     try {
       const res = await fetch("/.netlify/functions/get-questions");
       if (!res.ok) throw new Error("bad response");
@@ -156,6 +119,8 @@
       render();
     }
   }
+
+  init();
 
   function render() {
     loadingState.style.display = "none";
@@ -700,6 +665,17 @@
           };
         })
       );
+
+      if (DEMO_ONLY_MODE) {
+        // Mode demo terkunci: jangan pernah kirim ke backend asli. Simpan
+        // hanya di localStorage browser pengunjung supaya data master tidak
+        // pernah tersentuh/tertimpa oleh siapapun yang mencoba form demo ini.
+        saveSubmissionToLocalDemo(answers, files);
+        formLayout.style.display = "none";
+        document.querySelector(".letterhead").style.display = "none";
+        successState.style.display = "block";
+        return;
+      }
 
       const res = await fetch("/.netlify/functions/submit-candidate", {
         method: "POST",
