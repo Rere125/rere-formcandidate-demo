@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Form Candidate HRD Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+  <style>
+    :root {
+      --navy-900: #0b1f3b;
+      --navy-800: #142b4f;
+      --navy-700: #1e3a63;
+      --gold-500: #c9a227;
+      --gold-400: #e0bb4a;
+      --paper: #f7f5ee;
+      --paper-line: #e4ded0;
+      --ink: #1c1f26;
+      --ink-soft: #5b6270;
+      --font-display: 'Fraunces', serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+    }
+
+    .preview-head {
+      flex: 0 0 auto;
+      padding: 22px clamp(16px, 4vw, 48px) 18px;
+      background: linear-gradient(120deg, var(--navy-900), var(--navy-700));
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-head::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-500) 0%, var(--gold-400) 100%);
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--gold-400);
+      font: 500 11px/1.4 var(--font-mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(22px, 3vw, 30px);
+    }
+
+    .intro {
+      max-width: 720px;
+      margin: 8px 0 0;
+      color: rgba(255,255,255,.78);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .demo-note {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px clamp(16px, 4vw, 48px);
+      border-bottom: 1px solid var(--paper-line);
+      background: #fdf8e8;
+      color: #6b551a;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .demo-note strong { color: var(--navy-900); }
+    .demo-note code {
+      background: #fff;
+      border: 1px solid var(--paper-line);
+      border-radius: 5px;
+      padding: 1px 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--navy-900);
+    }
+
+    .toolbar {
+      flex: 0 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px clamp(16px, 4vw, 48px);
+      background: #fff;
+      border-bottom: 1px solid var(--paper-line);
+    }
+
+    .tab {
+      appearance: none;
+      border: 1px solid var(--paper-line);
+      border-radius: 8px;
+      padding: 9px 16px;
+      background: var(--paper);
+      color: var(--navy-900);
+      cursor: pointer;
+      font: 600 13px var(--font-body);
+      transition: all .15s ease;
+    }
+    .tab:hover { border-color: var(--gold-500); }
+    .tab:focus-visible { outline: 2px solid var(--gold-500); outline-offset: 1px; }
+    .tab.active {
+      border-color: var(--navy-900);
+      background: var(--navy-900);
+      color: #fff;
+    }
+    .tab.active .tab-num { background: var(--gold-500); color: var(--navy-900); }
+    .tab-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--navy-900);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      margin-right: 6px;
+    }
+
+    .frame-wrap {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 0;
+      background: var(--paper);
+    }
+
+    iframe {
+      display: none;
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      border: 0;
+      background: var(--paper);
+    }
+    iframe.active { display: block; }
+
+    @media (max-width: 640px) {
+      .preview-head { padding-top: 18px; }
+      .toolbar { gap: 6px; }
+      .tab { flex: 1 1 28%; padding-inline: 10px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="preview-head">
+    <p class="eyebrow">Portfolio Preview &middot; HRD Candidate System</p>
+    <h1>Formulir Data Kandidat &mdash; Demo</h1>
+    <p class="intro">Satu halaman preview untuk mencoba formulir kandidat, login admin, kelola pertanyaan, sample submission, dan export laporan &mdash; persis seperti aslinya.</p>
+  </header>
+
+  <div class="demo-note">
+    &#9998; <strong>Demo mode:</strong> data yang diisi &amp; perubahan panel hanya tersimpan di browser ini (tidak memengaruhi data master). Login admin: <code>demo</code> / <code>demo123</code>.
+  </div>
+
+  <nav class="toolbar" aria-label="Menu preview">
+    <button class="tab active" type="button" data-view="public"><span class="tab-num">1</span>Public Form</button>
+    <button class="tab" type="button" data-view="login"><span class="tab-num">2</span>Admin Login</button>
+    <button class="tab" type="button" data-view="admin"><span class="tab-num">3</span>Panel Admin</button>
+  </nav>
+
+  <main class="frame-wrap">
+    <iframe id="frame-public" class="active" src="index.html" title="Public Form Kandidat"></iframe>
+    <iframe id="frame-login" src="admin.html" title="Login Admin Demo"></iframe>
+    <iframe id="frame-admin" src="admin.html" title="Panel Admin Demo"></iframe>
+  </main>
+
+  <script>
+    (function () {
+      const tabs = document.querySelectorAll(".tab");
+      const frames = document.querySelectorAll("iframe");
+
+      function showView(view) {
+        tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.view === view));
+        frames.forEach((frame) => frame.classList.toggle("active", frame.id === "frame-" + view));
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => showView(tab.dataset.view));
+      });
+    })();
+  </script>
+</body>
+</html>
