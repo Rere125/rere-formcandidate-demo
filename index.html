@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Renardi Elfenso — Human Capital Leader & HR Digitalizer</title>
+<meta name="description" content="Human Capital Leader specializing in Strategic HR, Talent Management, Compliance, and HR Digitalization." />
+
+<!-- Favicon (initials mark, no external file needed) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23e07a3f'/%3E%3Cstop offset='100%25' stop-color='%23c8642d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23101215'/%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='800' font-size='26' fill='%2314100b' text-anchor='middle'%3ERE%3C/text%3E%3C/svg%3E">
+
+<!-- TODO: ganti https://renardielfenso.com di bawah ini dengan domain asli setelah kamu kasih tahu -->
+<link rel="canonical" href="https://renardielfenso.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Renardi Elfenso — Human Capital Leader & HR Digitalizer" />
+<meta property="og:description" content="Human Capital Leader specializing in Strategic HR, Talent Management, Compliance, and HR Digitalization." />
+<meta property="og:url" content="https://renardielfenso.com/" />
+<meta property="og:image" content="https://renardielfenso.com/avatar-og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Renardi Elfenso — Human Capital Leader & HR Digitalizer" />
+<meta name="twitter:description" content="Human Capital Leader specializing in Strategic HR, Talent Management, Compliance, and HR Digitalization." />
+<meta name="twitter:image" content="https://renardielfenso.com/avatar-og.jpg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Renardi Elfenso",
+  "jobTitle": "Human Capital Leader",
+  "url": "https://renardielfenso.com/",
+  "email": "mailto:elfensorenardi@yahoo.co.id",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "West Jakarta",
+    "addressCountry": "ID"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/renardi-elfenso"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#101215;
+    --bg-soft:#16191d;
+    --card:#1a1d22;
+    --card-hover:#20242a;
+    --border:rgba(255,255,255,.08);
+    --border-hover:rgba(255,255,255,.16);
+    --text:#f4f2ee;
+    --muted:#98a0a8;
+    --accent:#e07a3f;
+    --accent-soft:rgba(224,122,63,.1);
+    --accent2:#7fb88a;
+    --grad:linear-gradient(135deg,#e07a3f 0%,#d96b30 100%);
+    --grad-soft:linear-gradient(135deg,rgba(224,122,63,.1),rgba(224,122,63,.03));
+    --radius:18px;
+    --shadow:0 20px 50px rgba(0,0,0,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--accent);color:#1a0f08}
+  body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+  .tag{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(224,122,63,.35);padding:6px 14px;border-radius:999px;margin-bottom:18px;background:rgba(224,122,63,.06)}
+  .tag::before{content:"●";color:var(--accent2);font-size:.5rem;animation:pulse 2s infinite}
+  @keyframes pulse{50%{opacity:.4}}
+  h2.section-title{font-size:clamp(1.9rem,4.2vw,2.8rem);font-weight:800;margin-bottom:14px;letter-spacing:-.02em;line-height:1.15}
+  p.section-sub{color:var(--muted);max-width:640px;margin-bottom:56px;font-size:1.02rem}
+  section{padding:120px 0;position:relative;z-index:1}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal.visible{opacity:1;transform:none}
+  .reveal.delay-1{transition-delay:.1s}
+  .reveal.delay-2{transition-delay:.2s}
+  .reveal.delay-3{transition-delay:.3s}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(7,9,15,.7);border-bottom:1px solid var(--border);transition:all .3s}
+  nav.scrolled{background:rgba(7,9,15,.9);border-bottom-color:rgba(255,255,255,.1)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{text-decoration:none;color:var(--text);display:flex;align-items:center;gap:12px;line-height:1}
+  .logo-mark{width:38px;height:38px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#14100b;font-weight:800;font-size:.95rem;font-family:'Outfit',sans-serif;box-shadow:0 4px 14px rgba(224,122,63,.25);flex-shrink:0;overflow:hidden;padding:0}
+  .logo-mark img{width:100%;height:100%;object-fit:cover;display:block;border-radius:9px}
+  .logo-text{display:flex;flex-direction:column;gap:3px}
+  .logo-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.02em;color:var(--text);white-space:nowrap}
+  .logo-name span{color:var(--accent);font-weight:500}
+  .logo-sub{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+  .logo-sub b{color:var(--accent2);font-weight:600}
+  .nav-links{display:flex;gap:6px;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s;padding:8px 14px;border-radius:8px}
+  .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+  .nav-cta{margin-left:14px;padding:9px 18px !important;background:var(--text);color:var(--bg) !important;font-weight:600;border-radius:10px !important}
+  .nav-cta:hover{background:var(--accent) !important}
+  .burger{display:none;background:none;border:1px solid var(--border);color:var(--text);font-size:1.2rem;cursor:pointer;padding:8px 12px;border-radius:10px}
+
+  header{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:100px 0 80px}
+  .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.4;pointer-events:none;z-index:0}
+  .orb1{width:520px;height:520px;background:#e07a3f;top:-140px;right:-100px;animation:float 18s ease-in-out infinite}
+  .orb2{width:460px;height:460px;background:#7fb88a;bottom:-160px;left:-140px;animation:float 22s ease-in-out infinite reverse}
+  .orb3{width:380px;height:380px;background:#c98a52;top:40%;left:50%;opacity:.2;animation:float 25s ease-in-out infinite}
+  @keyframes float{50%{transform:translate(30px,-30px) scale(1.05)}}
+  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center;position:relative;z-index:2;width:100%}
+  .hero-status{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.82rem;margin-bottom:24px;padding:8px 14px;border:1px solid rgba(224,122,63,.25);border-radius:999px;background:rgba(224,122,63,.06)}
+  .hero-status .dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);box-shadow:0 0 10px var(--accent2);animation:pulse 2s infinite}
+  h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;line-height:1.08;margin-bottom:24px;letter-spacing:-.03em}
+  .hero-desc{color:var(--muted);font-size:1.1rem;max-width:580px;margin-bottom:40px}
+  .hero-desc b{color:var(--text);font-weight:600}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:12px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .25s cubic-bezier(.16,1,.3,1);cursor:pointer;border:none;font-family:inherit;position:relative;overflow:hidden}
+  .btn:hover{transform:translateY(-3px)}
+  .btn-primary{background:var(--grad);color:#14100b;box-shadow:0 10px 30px rgba(224,122,63,.3)}
+  .btn-primary span{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px}
+  .btn-ghost{border:1px solid var(--border);color:var(--text);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{border-color:var(--accent);background:rgba(224,122,63,.08)}
+
+  .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--grad)}
+  .hero-card-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--border)}
+  .hero-card-head .title{display:flex;align-items:center;gap:10px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;color:var(--text);letter-spacing:-.01em}
+  .hero-card-head .title .avatar{width:32px;height:32px;border-radius:8px;background:var(--grad);display:grid;place-items:center;color:#14100b;font-weight:800;font-size:.78rem;font-family:'Outfit',sans-serif;overflow:hidden;padding:0}
+  .hero-card-head .title .avatar img{width:100%;height:100%;object-fit:cover;display:block;border-radius:7px}
+  .live-badge{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;color:var(--accent2);font-weight:600;text-transform:uppercase;letter-spacing:.08em;background:rgba(127,184,138,.08);border:1px solid rgba(127,184,138,.2);padding:4px 10px;border-radius:999px}
+  .live-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent2);box-shadow:0 0 8px var(--accent2);animation:pulse 2s infinite}
+  .profile-list{display:flex;flex-direction:column;gap:2px}
+  .profile-row{display:flex;justify-content:space-between;align-items:center;padding:13px 4px;border-bottom:1px dashed var(--border)}
+  .profile-row:last-child{border-bottom:none}
+  .profile-row .k{color:var(--muted);font-size:.9rem;font-weight:500}
+  .profile-row .v{color:var(--text);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;gap:6px}
+  .profile-row .v.accent{color:var(--accent2)}
+  .profile-row .v.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* Interactive dashboard widget tabs */
+  .dw-tabs{display:flex;gap:5px;background:var(--bg-soft);padding:4px;border-radius:10px;margin-bottom:16px}
+  .dw-tab{flex:1;text-align:center;padding:9px 6px;font-size:.78rem;font-weight:600;color:var(--muted);cursor:pointer;border-radius:7px;transition:all .2s;border:none;background:transparent;font-family:inherit}
+  .dw-tab:hover{color:var(--text)}
+  .dw-tab.active{background:var(--card-hover);color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  .dw-content{min-height:230px}
+  .dw-pane{display:none;animation:paneIn .35s ease}
+  .dw-pane.active{display:block}
+  @keyframes paneIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .dw-hint{color:var(--muted);font-size:.78rem;margin-bottom:14px;line-height:1.5}
+
+  .grid-9box{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:var(--bg-soft);padding:5px;border-radius:12px}
+  .box-cell{background:var(--card);border:1px solid var(--border);border-radius:8px;aspect-ratio:1.35/1;padding:6px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:all .2s}
+  .box-cell:hover{border-color:var(--accent);background:var(--card-hover)}
+  .box-cell.active{border-color:var(--accent);background:rgba(224,122,63,.1);box-shadow:inset 0 0 0 1px var(--accent)}
+  .box-label{font-size:.56rem;color:var(--muted);line-height:1.2;font-weight:600}
+  .box-candidates{display:flex;gap:4px;margin-top:3px}
+  .candidate-dot{width:15px;height:17px;border-radius:50%;background:var(--bg-soft);border:1px solid var(--border);color:var(--text);font-size:.52rem;font-weight:700;display:grid;place-items:center}
+  .candidate-dot.colored{background:var(--grad);color:#14100b;border-color:transparent}
+  .dw-info{font-size:.76rem;color:var(--muted);margin-top:12px;background:var(--bg-soft);padding:12px 14px;border-radius:10px;border:1px solid var(--border)}
+  .dw-info-header{display:flex;justify-content:space-between;font-weight:600;margin-bottom:6px;color:var(--text);font-size:.85rem}
+  .dw-info-header span:last-child{color:var(--accent)}
+  .dw-info-status{font-size:.74rem;color:var(--text)}
+  .dw-info-status span{font-weight:600;color:var(--accent2)}
+  .dw-info-action{font-size:.74rem;color:var(--accent);font-weight:600;margin-top:6px}
+
+  .chatbot-container{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg-soft)}
+  .chat-messages{height:150px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+  .chat-msg{display:flex;flex-direction:column;max-width:88%}
+  .chat-msg.bot{align-self:flex-start}
+  .chat-msg.user{align-self:flex-end}
+  .chat-bubble{padding:9px 12px;border-radius:12px;font-size:.78rem;line-height:1.45}
+  .chat-msg.bot .chat-bubble{background:var(--card);color:var(--text);border-top-left-radius:3px;border:1px solid var(--border)}
+  .chat-msg.user .chat-bubble{background:var(--grad);color:#14100b;font-weight:500;border-top-right-radius:3px}
+  .chat-sender{font-size:.62rem;color:var(--muted);margin-bottom:3px;padding-left:4px}
+  .chat-msg.user .chat-sender{text-align:right;padding-right:4px}
+  .chat-suggested{display:flex;gap:6px;padding:10px;background:var(--card);border-top:1px solid var(--border);overflow-x:auto}
+  .suggest-btn{background:var(--bg-soft);border:1px solid var(--border);border-radius:20px;padding:7px 12px;font-size:.7rem;font-weight:600;color:var(--text);cursor:pointer;white-space:nowrap;transition:all .2s;font-family:inherit}
+  .suggest-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+  .suggest-btn:disabled{opacity:.5;cursor:default}
+
+  .scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:.72rem;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;opacity:0;animation:fadeInScroll 1s ease 1.5s forwards,fadeOutScroll .8s ease 4s forwards;z-index:3;pointer-events:none;text-decoration:none}
+  @keyframes fadeInScroll{to{opacity:.75}}
+  @keyframes fadeOutScroll{to{opacity:0;visibility:hidden}}
+  .scroll-cue .mouse{width:22px;height:36px;border:1.5px solid var(--muted);border-radius:11px;position:relative}
+  .scroll-cue .mouse::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:3px;height:6px;background:var(--accent);border-radius:2px;animation:scrollDot 2s infinite}
+  @keyframes scrollDot{0%{opacity:1;top:7px}100%{opacity:0;top:18px}}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-60px;position:relative;z-index:3}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px 22px;text-align:left;transition:all .3s;position:relative;overflow:hidden}
+  .stat::before{content:"";position:absolute;top:0;left:0;width:3px;height:0;background:var(--grad);transition:height .4s}
+  .stat:hover{transform:translateY(-6px);border-color:var(--border-hover);background:var(--card-hover)}
+  .stat:hover::before{height:100%}
+  .stat-emoji{font-size:1.5rem;margin-bottom:12px;display:block}
+  .stat b{font-size:2.2rem;font-weight:800;display:block;margin-bottom:6px;letter-spacing:-.02em}
+  .stat span{color:var(--muted);font-size:.84rem;line-height:1.5}
+
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+  .about-grid p{color:var(--muted);margin-bottom:20px;font-size:1rem}
+  .about-grid p b{color:var(--text);font-weight:600}
+  .about-photo{width:120px;height:120px;border-radius:16px;overflow:hidden;position:relative;margin-bottom:26px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .about-photo-tag{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);color:#fff;font-size:.6rem;font-family:'JetBrains Mono',monospace;letter-spacing:.04em;text-align:center;padding:16px 4px 6px}
+  .highlight-box{background:var(--grad-soft);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-top:24px;display:flex;align-items:flex-start;gap:16px}
+  .highlight-box .ico{font-size:1.6rem;line-height:1}
+  .highlight-box p{margin:0;color:var(--text);font-size:.92rem;line-height:1.6}
+  .chip-wrap{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:999px;font-size:.85rem;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+  .chip:hover{border-color:var(--accent2);background:rgba(127,184,138,.06);transform:translateY(-2px)}
+
+  .iso-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .iso-badge{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);padding:8px 16px 8px 10px;border-radius:12px;transition:all .25s}
+  .iso-badge:hover{border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.06);transform:translateY(-2px)}
+  .iso-badge .ico{width:30px;height:30px;border-radius:8px;background:var(--grad-soft);border:1px solid var(--border);display:grid;place-items:center;font-size:.95rem;flex-shrink:0}
+  .iso-badge .info{display:flex;flex-direction:column;line-height:1.25}
+  .iso-badge .info b{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text);letter-spacing:.02em}
+  .iso-badge .info span{font-size:.66rem;color:var(--accent2);font-weight:600;letter-spacing:.03em}
+
+  .timeline-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .timeline{border-left:2px solid var(--border);margin-left:8px;padding-left:36px;grid-column:span2}
+  .t-item{position:relative;padding-bottom:48px}
+  .t-item:last-child{padding-bottom:0}
+  .t-item::before{content:"";position:absolute;left:-46px;top:8px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 0 4px var(--bg),0 0 12px rgba(224,122,63,.4)}
+  .t-period{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);background:rgba(224,122,63,.08);padding:4px 10px;border-radius:6px;margin-bottom:10px;letter-spacing:.05em}
+  .t-role{font-size:1.25rem;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+  .t-meta{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent2);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .t-meta::before{content:"@";color:var(--accent)}
+  .t-item ul{color:var(--muted);font-size:.94rem;padding-left:0;list-style:none}
+  .t-item li{margin-bottom:10px;padding-left:26px;position:relative;line-height:1.6}
+  .t-item li::before{content:"→";position:absolute;left:0;color:var(--accent2);font-weight:600}
+  .t-impact{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:8px 14px;background:rgba(127,184,138,.08);border:1px solid rgba(127,184,138,.25);border-radius:8px;color:var(--accent2);font-size:.82rem;font-weight:600;font-family:'JetBrains Mono',monospace}
+
+  #projects{background:var(--bg-soft)}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .proj{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;transition:all .3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+  .proj::before{content:"";position:absolute;inset:0;background:var(--grad-soft);opacity:0;transition:opacity .3s}
+  .proj::after{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);opacity:0;transition:opacity .3s}
+  .proj:hover{transform:translateY(-8px);border-color:rgba(224,122,63,.4);box-shadow:0 30px 60px -20px rgba(224,122,63,.15)}
+  .proj:hover::before{opacity:1}
+  .proj:hover::after{opacity:1}
+  .proj>*{position:relative;z-index:1}
+  .proj-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .proj .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.08em}
+  .proj .icon{width:48px;height:48px;border-radius:12px;background:var(--grad-soft);border:1px solid var(--border);display:grid;place-items:center;font-size:1.5rem;transition:all .3s}
+  .proj:hover .icon{background:var(--grad);transform:scale(1.05) rotate(-3deg)}
+  .proj h3{font-size:1.12rem;font-weight:700;margin-bottom:12px;letter-spacing:-.01em}
+  .proj p{color:var(--muted);font-size:.9rem;flex:1;line-height:1.65}
+  .proj .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+  .proj .tags span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent2);background:rgba(214,120,63,.08);padding:5px 10px;border-radius:6px;border:1px solid rgba(214,120,63,.18)}
+  .proj-demo-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;transition:gap .2s,color .2s}
+  .proj-demo-link:hover{gap:9px;color:var(--accent2)}
+
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .edu-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px;transition:all .3s;position:relative;overflow:hidden}
+  .edu-card::before{content:"";position:absolute;top:0;right:0;width:120px;height:120px;background:var(--grad);filter:blur(50px);opacity:.08;transition:opacity .3s}
+  .edu-card:hover{transform:translateY(-4px);border-color:var(--border-hover)}
+  .edu-card:hover::before{opacity:.15}
+  .edu-card .head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}  .edu-card h3{font-size:1.05rem;font-weight:700;flex:1;letter-spacing:-.01em}
+  .edu-card .badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:3px 8px;border-radius:5px;background:rgba(224,122,63,.1);color:var(--accent);border:1px solid rgba(224,122,63,.2);letter-spacing:.05em}
+  .edu-card .badge.green{background:rgba(127,184,138,.1);color:var(--accent2);border-color:rgba(127,184,138,.2)}
+  .edu-card .sub{color:var(--accent);font-size:.84rem;font-family:'JetBrains Mono',monospace;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+  .edu-card p{color:var(--muted);font-size:.92rem}
+
+  .lang-bars{margin-top:18px;display:flex;flex-direction:column;gap:14px}
+  .lang-bar-label{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:6px;color:var(--text)}
+  .lang-bar-label span:last-child{color:var(--accent2);font-family:'JetBrains Mono',monospace;font-size:.7rem}
+  .lang-bar-track{height:6px;background:var(--bg-soft);border:1px solid var(--border);border-radius:999px;overflow:hidden}
+  .lang-bar-fill{height:100%;width:0;border-radius:999px;background:var(--grad);transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+  .lang-bar-fill.animated{}
+
+  #contact{text-align:center;position:relative}
+  #contact::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(224,122,63,.1),transparent 70%);pointer-events:none;z-index:0}
+  .contact-card{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:48px;max-width:680px;position:relative;z-index:2;box-shadow:var(--shadow)}
+  .contact-card::before{content:"";position:absolute;inset:0;border-radius:24px;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.5}
+  .contact-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+  .contact-btns button.btn{font-family:inherit}
+  .privacy-note{margin-top:32px;color:var(--muted);font-size:.82rem;max-width:480px;margin-left:auto;margin-right:auto;display:inline-flex;align-items:center;gap:8px}
+
+  .contact-form{margin-top:36px;padding-top:36px;border-top:1px solid var(--border);text-align:left}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-field{margin-bottom:16px;display:flex;flex-direction:column;gap:8px}
+  .form-field label{font-size:.8rem;color:var(--muted);font-weight:600;letter-spacing:.02em}
+  .form-field input,.form-field textarea{background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:.92rem;resize:vertical;transition:border-color .2s,background .2s}
+  .form-field input:focus,.form-field textarea:focus{outline:none;border-color:var(--accent);background:rgba(224,122,63,.05)}
+  .form-note{margin-top:14px;color:var(--muted);font-size:.76rem;text-align:center}
+  @media(max-width:640px){.form-row{grid-template-columns:1fr}}
+
+  footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;color:var(--muted);font-size:.86rem;position:relative;z-index:2}
+  footer .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer .socials{display:flex;gap:14px}
+  footer .socials a{color:var(--muted);text-decoration:none;transition:color .2s;font-family:'JetBrains Mono',monospace;font-size:.82rem}
+  footer .socials a:hover{color:var(--accent)}
+
+  @media(max-width:960px){
+    .hero-grid,.about-grid,.edu-grid,.timeline-wrap{grid-template-columns:1fr}
+    .timeline{grid-column:auto}
+    .proj-grid{grid-template-columns:repeat(2,1fr)}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .contact-card{padding:36px 28px}
+  }
+  @media(max-width:640px){
+    .proj-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .nav-links{position:fixed;top:72px;right:0;background:rgba(7,9,15,.98);backdrop-filter:blur(20px);flex-direction:column;padding:24px;width:100%;transform:translateX(100%);transition:transform .3s;border-bottom:1px solid var(--border);gap:0}
+    .nav-links.open{transform:none}
+    .nav-links a{padding:14px 16px;display:block}
+    .nav-cta{margin:8px 16px 0;text-align:center}
+    .burger{display:block}
+    .btn-ghost{margin-left:0}
+    section{padding:88px 0}
+    h1{font-size:2.4rem}
+    footer .foot-inner{flex-direction:column;text-align:center}
+    .logo-sub{display:none}
+  }
+
+  #scrollProgress{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--grad);z-index:999;transition:width .1s linear;box-shadow:0 0 8px rgba(224,122,63,.5)}
+</style>
+</head>
+<body>
+<div id="scrollProgress"></div>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark"><img src="images.jpg" alt="Renardi Elfenso"></span>
+      <span class="logo-text">
+        <span class="logo-name">RENARDI <span>ELFENSO</span></span>
+        <span class="logo-sub">HC Leader · <b>Digitalization</b> & Automation</span>
+      </span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-status reveal">
+          <span class="dot"></span>
+          <span>Open for HR leadership opportunities</span>
+        </div>
+        <h1 class="reveal delay-1">Hi, I'm <span class="grad-text">Renardi Elfenso</span>.<br>I build the future of HR.</h1>
+        <p class="hero-desc reveal delay-2">Human Capital Leader & Certified QMS Auditor — transforming <b>people strategy, compliance, and talent management</b> into smart, self-built digital systems for a <b>700+ employee, multi-branch organization</b> spanning 37 cities across Indonesia.</p>
+        <div class="hero-cta reveal delay-3">
+          <a href="#projects" class="btn btn-primary"><span>See My Work ↓</span></a>
+          <a href="#contact" class="btn btn-ghost">Let's Connect</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal delay-2">
+        <div class="hero-card-head">
+          <div class="title">
+            <span class="avatar"><img src="images.jpg" alt="Renardi Elfenso"></span>
+            <span>Sandbox</span>
+          </div>
+          <span class="live-badge">Live</span>
+        </div>
+
+        <div class="dw-tabs">
+          <button class="dw-tab active" data-tab="tab-profile" type="button">Profile</button>
+          <button class="dw-tab" data-tab="tab-9box" type="button">9-Box</button>
+          <button class="dw-tab" data-tab="tab-chatbot" type="button">HCM Bot</button>
+        </div>
+
+        <div class="dw-content">
+          <div id="tab-profile" class="dw-pane active">
+            <div class="profile-list">
+              <div class="profile-row"><span class="k">Role</span><span class="v">HC Leader</span></div>
+              <div class="profile-row"><span class="k">Workforce</span><span class="v">700+ Employees</span></div>
+              <div class="profile-row"><span class="k">Branches</span><span class="v">37 Nationwide</span></div>
+              <div class="profile-row"><span class="k">Time-to-Hire</span><span class="v grad">−25% 🚀</span></div>
+              <div class="profile-row"><span class="k">ISO Audits</span><span class="v accent">0 Major Findings</span></div>
+              <div class="profile-row"><span class="k">Certified</span><span class="v">QMS Auditor ✓</span></div>
+            </div>
+          </div>
+
+          <div id="tab-9box" class="dw-pane">
+            <p class="dw-hint">Live demo of the talent calibration tool I built — tap a cell to inspect a profile.</p>
+            <div class="grid-9box">
+              <div class="box-cell" data-talent="Hendra Setiawan" data-kpi="72%" data-status="Inconsistent" data-action="Target coaching &amp; close performance gaps"><span class="box-label">Inconsistent</span><div class="box-candidates"><div class="candidate-dot">H</div></div></div>
+              <div class="box-cell" data-talent="Yusuf Ramadhan" data-kpi="82%" data-status="Solid Doer" data-action="Job enrichment, lateral development paths"><span class="box-label">Solid Doer</span><div class="box-candidates"><div class="candidate-dot">Y</div></div></div>
+              <div class="box-cell" data-talent="Rian Hermawan" data-kpi="85%" data-status="Key Player" data-action="Cross-department project leadership role"><span class="box-label">Key Player</span><div class="box-candidates"><div class="candidate-dot">R</div></div></div>
+              <div class="box-cell" data-talent="Hasan S." data-kpi="60%" data-status="Underperformer" data-action="Design a Performance Improvement Plan (PIP)"><span class="box-label">Underperformer</span><div class="box-candidates"><div class="candidate-dot">H</div></div></div>
+              <div class="box-cell" data-talent="Anita Wijaya" data-kpi="80%" data-status="Average Doer" data-action="Skill expansion training &amp; mentoring"><span class="box-label">Average Doer</span><div class="box-candidates"><div class="candidate-dot">A</div></div></div>
+              <div class="box-cell" data-talent="Ahmad Ridwan" data-kpi="88%" data-status="High Achiever" data-action="Technical mastery tracks, reward linkage"><span class="box-label">High Achiever</span><div class="box-candidates"><div class="candidate-dot">A</div></div></div>
+              <div class="box-cell" data-talent="Siska Wardani" data-kpi="70%" data-status="Not Aligned" data-action="Re-evaluate cultural alignment / job re-fit"><span class="box-label">Not Aligned</span><div class="box-candidates"><div class="candidate-dot">S</div></div></div>
+              <div class="box-cell" data-talent="Budi Santoso" data-kpi="79%" data-status="Solid Performer" data-action="Leadership skill mentorship program"><span class="box-label">Solid Performer</span><div class="box-candidates"><div class="candidate-dot">B</div></div></div>
+              <div class="box-cell active" data-talent="Renardi Elfenso" data-kpi="96%" data-status="Star Player" data-action="Fast-track promotion &amp; executive sponsorship"><span class="box-label">Star Player</span><div class="box-candidates"><div class="candidate-dot colored">R</div></div></div>
+            </div>
+            <div id="calibration-card" class="dw-info">
+              <div class="dw-info-header">
+                <span id="cal-name">👤 <b>Renardi Elfenso</b></span>
+                <span id="cal-kpi">KPI: <b>96%</b></span>
+              </div>
+              <div class="dw-info-status">Category: <span id="cal-status">Star Player</span></div>
+              <div id="cal-action" class="dw-info-action">➔ Fast-track promotion &amp; executive sponsorship</div>
+            </div>
+          </div>
+
+          <div id="tab-chatbot" class="dw-pane">
+            <p class="dw-hint">A sample of the internal HCM assistant I built to cut repetitive HR questions.</p>
+            <div class="chatbot-container">
+              <div class="chat-messages" id="chat-box">
+                <div class="chat-msg bot">
+                  <span class="chat-sender">HCM Assistant</span>
+                  <div class="chat-bubble">Halo! Saya HCM Virtual Assistant. Silakan pilih salah satu pertanyaan di bawah.</div>
+                </div>
+              </div>
+              <div class="chat-suggested">
+                <button class="suggest-btn" type="button" data-q="cuti">📅 Sisa Cuti?</button>
+                <button class="suggest-btn" type="button" data-q="kacamata">👓 Klaim Kacamata</button>
+                <button class="suggest-btn" type="button" data-q="pkwt">⚖️ Hitung PKWT</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-cue" aria-label="Scroll down">
+    <div class="mouse"></div>
+    <span>SCROLL</span>
+  </a>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat reveal"><span class="stat-emoji">⚡</span><b class="grad-text" data-target="25" data-suffix="%">0%</b><span>Faster Time-to-Hire (60→45 days)</span></div>
+    <div class="stat reveal delay-1"><span class="stat-emoji">🎯</span><b class="grad-text" data-target="95" data-suffix="%+">0%+</b><span>Nationwide On-Time Attendance</span></div>
+    <div class="stat reveal delay-2"><span class="stat-emoji">🛡️</span><b class="grad-text" data-target="0" data-suffix="">0</b><span>ISO Major Findings</span></div>
+    <div class="stat reveal delay-3"><span class="stat-emoji">🚀</span><b class="grad-text" data-target="7" data-suffix="+">0+</b><span>Self-Built HR Digital Tools</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <span class="tag reveal">About Me</span>
+    <div class="about-grid">
+      <div class="reveal">
+        <h2 class="section-title">People strategy,<br><span class="grad-text">powered by code.</span></h2>
+        <p>I operate as a strategic deputy to the HC Manager, owning HR strategy end-to-end — from executive reporting and manpower planning to talent mapping and succession planning using the 9-Box & McKinsey frameworks.</p>
+        <p>What sets me apart: I don't just manage HR — <b>I build it.</b> I personally design and develop digital HR tools: recruitment portals, performance dashboards, attendance trackers, and employee-service chatbots that cut cost and eliminate manual work across 700+ employees nationwide.</p>
+        <div class="highlight-box">
+          <span class="ico">💡</span>
+          <p><b>Unique edge:</b> A rare blend of strategic HR leadership + hands-on software builder — turning people operations into data-driven, automated systems.</p>
+        </div>
+      </div>
+      <div class="reveal delay-1">
+        <div class="about-photo">
+          <img src="images.jpg" alt="Renardi Elfenso — Human Capital Leader" loading="lazy">
+          <span class="about-photo-tag">West Jakarta, ID</span>
+        </div>
+        <h3 style="margin-bottom:20px;font-size:1.05rem;font-weight:700">Core Competencies</h3>
+        <div class="chip-wrap">
+          <span class="chip"><span>🎯</span> Strategic HR Leadership</span>
+          <span class="chip"><span>🤖</span> HR Digitalization</span>
+          <span class="chip"><span>📊</span> 9-Box Talent Mapping</span>
+          <span class="chip"><span>⚖️</span> Employment Law</span>
+          <span class="chip"><span>👥</span> Full-Cycle Recruitment</span>
+          <span class="chip"><span>📈</span> Manpower Planning</span>
+          <span class="chip"><span>💼</span> HRIS (Talenta / Mekari)</span>
+          <span class="chip"><span>📉</span> Google Data Studio</span>
+          <span class="chip"><span>🌐</span> Netlify Web Deployment</span>
+        </div>
+
+        <h3 style="margin:28px 0 16px;font-size:1.05rem;font-weight:700">ISO Standards Familiarity</h3>
+        <div class="iso-badges">
+          <span class="iso-badge"><span class="ico">🛡️</span><span class="info"><b>ISO 9001</b><span>Quality Mgmt</span></span></span>
+          <span class="iso-badge"><span class="ico">🌱</span><span class="info"><b>ISO 14001</b><span>Environmental</span></span></span>
+          <span class="iso-badge"><span class="ico">🔒</span><span class="info"><b>ISO 27001</b><span>Info Security</span></span></span>
+          <span class="iso-badge"><span class="ico">🤝</span><span class="info"><b>ISO 37001</b><span>Anti-Bribery</span></span></span>
+          <span class="iso-badge"><span class="ico">⛑️</span><span class="info"><b>ISO 45001</b><span>OH&S</span></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <span class="tag reveal">Career Journey</span>
+    <h2 class="section-title reveal">Professional <span class="grad-text">Experience</span></h2>
+    <p class="section-sub reveal">Leading Human Capital at one of Indonesia's largest metal manufacturing groups — light steel & advanced roofing systems.</p>
+    <div class="timeline-wrap">
+      <div class="timeline">
+        <div class="t-item reveal">
+          <span class="t-period">JUL 2023 — PRESENT</span>
+          <div class="t-role">Human Capital Recruitment & Administration Team Leader</div>
+          <div class="t-meta">PT Tatalogam Group</div>
+          <ul>
+            <li>Strategic deputy to the HC Manager for 700+ employees across 37 branches; drafting HR policy and preparing board-level talent briefs.</li>
+            <li>Cut Time-to-Hire by 25% by re-engineering recruitment SOPs and shifting sourcing to optimized free job portals.</li>
+            <li>Designed company-wide Performance Appraisal system & 9-Box Talent Mapping translated into Individual Development Plans.</li>
+            <li>Built a custom Candidate Application & Tracking system, replacing a paid third-party tool and cutting recurring software cost.</li>
+            <li>Built a nationwide Attendance & Lateness Tracker monitoring 700+ employees across all 37 branches in real time.</li>
+            <li>Sustained 95%+ nationwide on-time attendance via the self-built dashboard.</li>
+            <li>Manage full PKWT/PKWTT contract lifecycle per UU 13/2003, UU 6/2023 (Ciptaker) & PP 35/2021.</li>
+          </ul>
+          <div class="t-impact">✓ Zero major findings across ISO 9001, 14001, 27001, 37001 & 45001 audits</div>
+        </div>
+        <div class="t-item reveal">
+          <span class="t-period">MAR 2022 — JUL 2023</span>
+          <div class="t-role">Human Capital Recruitment & Administration Officer</div>
+          <div class="t-meta">PT Tatalogam Group</div>
+          <ul>
+            <li>Recruited 30 positions/year (Non-Staff to Managerial) across social media, job portals & internal channels.</li>
+            <li>Built the Recruitment Tracker & Candidate Management System; maintained 100% accuracy in contracts, offers & digital records.</li>
+            <li>Partnered with Division Leads & Branch Managers on org redesign, job specifications & employee relations cases.</li>
+          </ul>
+          <div class="t-impact">✓ 100% accuracy in contracts & digital records</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="tag reveal">Digitalization & Automation</span>
+    <h2 class="section-title reveal">Self-Built <span class="grad-text">HR Systems</span></h2>
+    <p class="section-sub reveal">From zero to company-wide adoption — tools I personally designed and developed to replace manual workflows and paid subscriptions.</p>
+    <div class="proj-grid">
+
+      <div class="proj reveal">
+        <div class="proj-head"><span class="num">PROJECT_01</span></div>
+        <div class="icon">📋</div>
+        <h3>Digital Candidate Application Form</h3>
+        <p>Self-built recruitment form & real-time status tracker used company-wide. Replaces a paid third-party subscription — saving recurring software cost while giving candidates live visibility into their application status.</p>
+        <div class="tags"><span>Netlify</span><span>Netlify Blobs</span><span>Web Form</span></div>
+        <a href="https://rere-candidate-form-demo.netlify.app/" class="proj-demo-link" target="_blank" rel="noopener">🔗 Live Demo</a>
+      </div>
+
+      <div class="proj reveal delay-1">
+        <div class="proj-head"><span class="num">PROJECT_02</span></div>
+        <div class="icon">📊</div>
+        <h3>Performance Review Dashboard</h3>
+        <p>Converts raw HRIS & Excel appraisal data into leadership-ready talent insights — visualizing performance scores to power appraisal calibration and succession decisions.</p>
+        <div class="tags"><span>Google Data Studio</span><span>HRIS</span><span>Analytics</span></div>
+        <span class="proj-demo-link" style="opacity:.55;cursor:default;pointer-events:none">🚧 Demo In Development</span>
+      </div>
+
+      <div class="proj reveal delay-2">
+        <div class="proj-head"><span class="num">PROJECT_03</span></div>
+        <div class="icon">🤝</div>
+        <h3>1-on-1 Meeting Form</h3>
+        <p>Structured digital form standardizing manager–employee 1-on-1 sessions: agenda capture, feedback logging, and action-item follow-up — building a documented coaching culture.</p>
+        <div class="tags"><span>Digital Form</span><span>Employee Relations</span></div>
+        <span class="proj-demo-link" style="opacity:.55;cursor:default;pointer-events:none">🚧 Demo In Development</span>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head"><span class="num">PROJECT_04</span></div>
+        <div class="icon">🧮</div>
+        <h3>Severance & Separation Calculator</h3>
+        <p>Automated calculator for resignation & termination compensation, aligned with UU Cipta Kerja & PP 35/2021 — eliminating manual computation errors in offboarding.</p>
+        <div class="tags"><span>Automation</span><span>Compliance</span><span>Offboarding</span></div>
+        <a href="https://rerekalkulatorphkresignchecklistdemo.netlify.app/" class="proj-demo-link" target="_blank" rel="noopener">🔗 Live Demo</a>
+      </div>
+
+      <div class="proj reveal delay-1">
+        <div class="proj-head"><span class="num">PROJECT_05</span></div>
+        <div class="icon">⏰</div>
+        <h3>Nationwide Attendance & Lateness Tracker</h3>
+        <p>Self-built real-time dashboard monitoring <b>700+ employees across 37 branches</b> nationwide. Automatically flags late arrivals, computes lateness duration, and aggregates branch-level on-time scores — replacing manual Excel recap and enabling Branch Managers to act on the same day.</p>
+        <span class="proj-demo-link" style="opacity:.55;cursor:default;pointer-events:none">🚧 Demo In Development</span>
+      </div>
+
+      <div class="proj reveal delay-2">
+        <div class="proj-head"><span class="num">PROJECT_06</span></div>
+        <div class="icon">🤖</div>
+        <h3>HCM WhatsApp Chatbot</h3>
+        <p>Self-built internal chatbot answering employee FAQs in a casual, conversational tone — significantly cutting repetitive inbound questions to the HR team.</p>
+        <div class="tags"><span>Chatbot</span><span>WhatsApp</span><span>Employee Self-Service</span></div>
+        <a href="https://hrdchatbotsample.netlify.app/" class="proj-demo-link" target="_blank" rel="noopener">🔗 Live Demo</a>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head"><span class="num">PROJECT_07</span></div>
+        <div class="icon">🗂️</div>
+        <h3>Talent 9-Box Matrix System</h3>
+        <p>End-to-end talent management platform: digital assessment form feeds submissions into an admin dashboard that automatically maps employees onto the 9-box grid (high potential, high performer, etc.) to power succession planning.</p>
+        <div class="tags"><span>Netlify</span><span>Netlify Blobs</span><span>Admin Dashboard</span></div>
+        <a href="https://rere9boxmatrixdemo.netlify.app/" class="proj-demo-link" target="_blank" rel="noopener">🔗 Live Demo</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <span class="tag reveal">Credentials</span>
+    <h2 class="section-title reveal">Education & <span class="grad-text">Certifications</span></h2>
+    <p class="section-sub reveal"></p>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="head">
+          <h3>🎓 Bachelor of Management — HRM</h3>
+          <span class="badge">GPA 3.68</span>
+        </div>
+        <div class="sub">▸ Universitas Tarumanagara · 2018 — 2022</div>
+        <p>Majoring in Human Resource Management with strong academic performance.</p>
+      </div>
+      <div class="edu-card reveal delay-1">
+        <div class="head">
+          <h3>🛡️ Certified Internal QMS Auditor</h3>
+          <span class="badge green">VERIFIED</span>
+        </div>
+        <div class="sub">▸ LRQA · ISO 9001:2015 · Nov 2024</div>
+        <p>Certified to conduct internal quality management system audits.</p>
+      </div>
+      <div class="edu-card reveal delay-2">
+        <div class="head">
+          <h3>🚀 Millennial Leadership Model</h3>
+          <span class="badge">2023-24</span>
+        </div>
+        <div class="sub">▸ QuBisa</div>
+        <p>Leadership development & time management for productivity.</p>
+      </div>
+      <div class="edu-card reveal delay-3">
+        <div class="head">
+          <h3>🌏 Languages</h3>
+          <span class="badge green">FLUENT</span>
+        </div>
+        <div class="sub">▸ Communication</div>
+        <p>Bahasa Indonesia — Native · English — Conversational & strong written proficiency.</p>
+        <div class="lang-bars">
+          <div class="lang-bar-row">
+            <div class="lang-bar-label"><span>Bahasa Indonesia</span><span>Native</span></div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" data-width="100"></div></div>
+          </div>
+          <div class="lang-bar-row">
+            <div class="lang-bar-label"><span>English</span><span>Conversational</span></div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" data-width="75"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <span class="tag reveal">Get In Touch</span>
+    <h2 class="section-title reveal">Let's build something <span class="grad-text">future-ready.</span></h2>
+    <div class="contact-card reveal">
+      <p style="color:var(--muted);max-width:480px;margin:0 auto;font-size:1rem">Open to HR/Human Capital leadership opportunities, consulting, and collaboration on HR digitalization.</p>
+      <div class="contact-btns">
+        <a class="btn btn-primary" href="mailto:elfensorenardi@yahoo.co.id"><span>📧 Send Email</span></a>
+        <button type="button" class="btn btn-ghost" id="copyEmailBtn" onclick="copyEmail()"><span id="copyEmailLabel">📋 Copy Email</span></button>
+        <a class="btn btn-ghost" href="https://wa.me/6281222209304?text=Halo%20Renardi%2C%20saya%20tertarik%20untuk%20terhubung%20terkait%20peluang%20HR%20leadership." target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/renardi-elfenso" target="_blank" rel="noopener">💼 LinkedIn</a>
+      </div>
+
+      <p class="privacy-note">📍 Based in West Jakarta, Indonesia</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Renardi Elfenso — Crafted with strategy & code.</div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/renardi-elfenso" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:elfensorenardi@yahoo.co.id">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+
+  // Scroll progress bar
+  const progressBar = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop || document.body.scrollTop);
+    const height = h.scrollHeight - h.clientHeight;
+    const pct = height > 0 ? (scrolled / height) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  });
+
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Counter animation for stat numbers
+  function animateCounter(el) {
+    const target = parseFloat(el.getAttribute('data-target'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(target * eased);
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCounter(e.target); counterIO.unobserve(e.target); }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.stat b[data-target]').forEach(el => counterIO.observe(el));
+
+  // Language proficiency bar fill-in animation
+  const langIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const w = e.target.getAttribute('data-width');
+        e.target.style.width = w + '%';
+        langIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.lang-bar-fill').forEach(el => langIO.observe(el));
+
+  // Copy email to clipboard
+  function copyEmail() {
+    const email = 'elfensorenardi@yahoo.co.id';
+    navigator.clipboard.writeText(email).then(() => {
+      const label = document.getElementById('copyEmailLabel');
+      const original = label.textContent;
+      label.textContent = '✅ Copied!';
+      setTimeout(() => { label.textContent = original; }, 2000);
+    });
+  }
+
+  // Hero sandbox widget: tab switching (Profile / 9-Box / HCM Bot)
+  const dwTabs = document.querySelectorAll('.dw-tab');
+  dwTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      dwTabs.forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.dw-pane').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // 9-Box calibration: click a cell to preview a talent profile
+  document.querySelectorAll('.box-cell').forEach(cell => {
+    cell.addEventListener('click', () => {
+      document.querySelectorAll('.box-cell').forEach(c => c.classList.remove('active'));
+      cell.classList.add('active');
+      document.getElementById('cal-name').innerHTML = `👤 <b>${cell.dataset.talent}</b>`;
+      document.getElementById('cal-kpi').innerHTML = `KPI: <b>${cell.dataset.kpi}</b>`;
+      document.getElementById('cal-status').textContent = cell.dataset.status;
+      document.getElementById('cal-action').textContent = `➔ ${cell.dataset.action}`;
+    });
+  });
+
+  // HCM chatbot demo: canned replies to suggested questions
+  const chatReplies = {
+    cuti: 'Sisa cuti tahunan Anda adalah <b>8 hari kerja</b>. Pengajuan cuti bisa diajukan minimal H-3 melalui modul ESS.',
+    kacamata: 'Plafon lensa &amp; bingkai kacamata untuk level Anda adalah <b>Rp 1.500.000/tahun</b>. Submit invoice resmi &amp; resep dokter mata di portal HCM.',
+    pkwt: 'Berdasarkan PP 35/2021, kompensasi PKWT dihitung: <code>(Masa Kerja / 12) × 1 Bulan Gaji Pokok</code>. Silakan gunakan Severance Calculator di menu Projects.'
+  };
+  document.querySelectorAll('.suggest-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const chatBox = document.getElementById('chat-box');
+      const suggestBtns = document.querySelectorAll('.suggest-btn');
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user';
+      userMsg.innerHTML = `<span class="chat-sender">You</span><div class="chat-bubble">${btn.textContent.trim()}</div>`;
+      chatBox.appendChild(userMsg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+      suggestBtns.forEach(b => b.disabled = true);
+
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-msg bot';
+        botMsg.innerHTML = `<span class="chat-sender">HCM Assistant</span><div class="chat-bubble">${chatReplies[btn.dataset.q] || 'Maaf, saya belum bisa menjawab itu.'}</div>`;
+        chatBox.appendChild(botMsg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        suggestBtns.forEach(b => b.disabled = false);
+      }, 700);
+    });
+  });
+</script>
+
+</body>
+</html>
